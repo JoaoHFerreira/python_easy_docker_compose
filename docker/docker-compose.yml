@@ -4,3 +4,4 @@ services:
       context: .
     volumes:
       - ../app:/app  
+    network_mode: "bridge"
