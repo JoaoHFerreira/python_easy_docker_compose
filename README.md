@@ -1,90 +1,31 @@
-# Simple Python Package Example
+# Easy Python Docker - Quick Development Setup
 
-This project demonstrates how to create and install a basic Python package.
+Follow these steps to quickly set up a Python development environment using Docker.
 
-## Project Structure
-
-```
-fruits/
-├── __init__.py      # Empty (for now)
-├── fruits.py       # Defines the 'banana' variable
-├── setup.py        # Provides metadata and build instructions for the package
-└── tropical/
-    ├── __init__.py  # Makes 'tropical' a subpackage
-    └── abacaxi.py    # Defines the 'abacaxi' variable
-
-3 directories, 5 files
-```
-
-## Steps
-
-1. **Create the Package Directory and Modules:**
-   - Make a new directory named `fruits`.
-   - Inside `fruits`, create `__init__.py`, `fruits.py`, and a subdirectory `tropical` with `__init__.py` and `abacaxi.py`.
-
-2. **Define Variables:**
-   - In `fruits.py`, add:
-
-     ```python
-     banana = "banana"
-     ```
-
-   - In `tropical/abacaxi.py`, add:
-
-     ```python
-     abacaxi = "abacaxi"
-     ```
-
-3. **Create `setup.py`** in the root directory:
-
-   ```python
-   from setuptools import setup, find_packages
-
-   setup(
-       name='fruits',
-       version='0.1',
-       packages=find_packages(),
-   )
-   ```
-
-4. **Build the package:**
-
-   * **Wheel (recommended):**
-
-     ```bash
-     python setup.py bdist_wheel 
-     ```
-
-   * **Egg (older format):**
-
-     ```bash
-     python setup.py bdist_egg
-     ```
-
-5. **Install (editable mode - for development):**
-
+1. **Navigate to the Docker directory:**
    ```bash
-   pip install -e . 
+   cd docker
    ```
 
-6. **Install (non-editable mode - for actual use):**
+2. **Optional: Edit the Dockerfile**
+   If needed, modify the `Dockerfile` located at:
+   ```
+   python_easy_docker_compose/docker/Dockerfile
+   ```
 
+3. **Add your required libraries:**
+   Specify any additional Python libraries in:
+   ```
+   python_easy_docker_compose/docker/requirements
+   ```
+
+4. **Build the Docker image:**
    ```bash
-   pip install ./dist/<package_name>-<version>-py3-none-any.whl  # Replace with your actual wheel filename
+   docker-compose build python-service
    ```
 
-   or 
-
+5. **Run the container:**
+   Launch the container with:
    ```bash
-   pip install ./dist/<package_name>-<version>-py3.x.egg  # Replace with your actual egg filename
+   docker-compose run --rm -it python-service bash
    ```
-
-## Usage
-
-```python
-import fruits
-print(fruits.banana)  # Output: banana
-
-import tropical.abacaxi as abacaxi
-print(abacaxi.abacaxi)  # Output: abacaxi
-```

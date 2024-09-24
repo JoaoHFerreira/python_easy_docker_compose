@@ -1,6 +1,6 @@
 services:
-  python-egg: 
+  python-service: 
     build:
       context: .
     volumes:
-      - ../fruits:/fruits  
+      - ../app:/app  
