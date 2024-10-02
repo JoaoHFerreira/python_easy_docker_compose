@@ -1,0 +1,7 @@
+setup.py
+fruits.egg-info/PKG-INFO
+fruits.egg-info/SOURCES.txt
+fruits.egg-info/dependency_links.txt
+fruits.egg-info/top_level.txt
+tropical/__init__.py
+tropical/abacaxi.py
