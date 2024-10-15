@@ -1,0 +1,9 @@
+services:
+  lambda-service:
+    build:
+      context: .
+    ports:
+      - "9000:8080"
+    volumes:
+      - ../app:/var/task
+    network_mode: "bridge"
