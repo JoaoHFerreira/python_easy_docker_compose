@@ -1,17 +1,17 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  FastApiLambda:
+  MyFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: main.lambda_handler
-      Runtime: python3.9
-      CodeUri: ./app
-      MemorySize: 128
-      Timeout: 10
+      PackageType: Image
+      ImageUri: 291315245624.dkr.ecr.eu-west-1.amazonaws.com/lambda/docker-fastapi:latest
       Events:
-        Api:
-          Type: Api
+        HttpApi:
+          Type: HttpApi
           Properties:
-            Path: /
-            Method: GET
+            Path: /{proxy+}
+            Method: ANY
+    Metadata:
+      DockerContext: .
+      Dockerfile: docker/Dockerfile

@@ -3,8 +3,8 @@ FROM public.ecr.aws/lambda/python:3.9
 
 WORKDIR /var/task
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY requirements .
+RUN pip install -r requirements
 
 
 CMD ["main.lambda_handler"]
